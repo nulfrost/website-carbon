@@ -1,2 +1,10 @@
 node_modules
 index.js
+carbon-function.zip
+.env
+index.js
+index.cjs
+layers/node-fetch/node-fetch-layer.zip
+layers/node-fetch/nodejs/node_modules
+layers/website-carbon-calculator/nodejs/node_modules
+layers/website-carbon-calculator/website-carbon-calculator-layer.zip

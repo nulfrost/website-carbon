@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "execute": "ts-node index.ts",
-    "compile": "tsc index.ts"
+    "compile": "tsc index.ts && zip -r9 carbon-function.zip index.js package.json",
+    "clean": "rm -rf carbon-function.zip index.js",
+    "upload": "aws lambda update-function-code --function-name carbon-function --zip-file fileb://carbon-function.zip"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {

@@ -3,22 +3,23 @@ import {
   WebsiteCarbonCalculatorError,
 } from "website-carbon-calculator";
 
-const p = "API-KEY-HERE";
-
-async function run() {
+exports.handler = async (event: any) => {
   try {
     const websiteCarbonCalculator = new WebsiteCarbonCalculator({
-      pagespeedApiKey: p,
+      pagespeedApiKey: process.env.PAGESPEED_API_KEY as string,
     });
     const result = await websiteCarbonCalculator.calculateByURL(
-      "https://yourwebsite.com/"
+      event.websiteName
     );
-    console.log(result);
+
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    };
+    return response;
   } catch (error) {
     if (error instanceof WebsiteCarbonCalculatorError) {
       console.warn(error.message);
     }
   }
-}
-
-run();
+};
